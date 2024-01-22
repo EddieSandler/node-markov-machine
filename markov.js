@@ -46,11 +46,21 @@ class MarkovMachine {
 
   makeText(numWords = 100) {
     // TODO
-  console.log(this.chain)
+    Object.values(this.chain).filter(val=>{
+      if(val !==null && val.length >1){
+        let index = Math.floor(Math.random() * val.length);
+        console.log(val[index])
+
+      }
+    })
+    }
   }
-}
 
 
-let mm = new MarkovMachine("the cat in the hat");
+
+
+
+
+
+mm = new MarkovMachine("the cat in the hat");
 mm.makeText()
-// let mm = new MarkovMachine("eddie is cool eddie is fun");
