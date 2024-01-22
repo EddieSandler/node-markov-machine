@@ -18,8 +18,24 @@ class MarkovMachine {
 
   makeChains() {
     // TODO
-  }
+    let chain = {};
+    let words = this.words;
+    for (let i = 0; i < words.length - 1; i++) {
+      const currentWord = words[i];
+      const nextWord = words[i + 1];
 
+      if(!chain[currentWord]){
+        chain[currentWord] = [nextWord]
+      } else {
+        chain[currentWord].push(nextWord)
+
+      }
+
+    }
+
+      return chain
+
+  }
 
   /** return random text from chains */
 
@@ -27,3 +43,6 @@ class MarkovMachine {
     // TODO
   }
 }
+
+
+let mm = new MarkovMachine("the cat in the hat");
