@@ -18,31 +18,39 @@ class MarkovMachine {
 
   makeChains() {
     // TODO
-    let chain = {};
+    this.chain = {};
     let words = this.words;
-    for (let i = 0; i < words.length - 1; i++) {
+
+    for (let i = 0; i < words.length; i++) {
       const currentWord = words[i];
-      const nextWord = words[i + 1];
 
-      if(!chain[currentWord]){
-        chain[currentWord] = [nextWord]
+      if (i < words.length - 1) {
+          const nextWord = words[i + 1];
+
+          if (this.chain[currentWord]) {
+              this.chain[currentWord].push(nextWord);
+          } else {
+              this.chain[currentWord] = [nextWord];
+          }
       } else {
-        chain[currentWord].push(nextWord)
-
+          // Handling the last word
+          this.chain[currentWord] = null;
       }
-
-    }
-
-      return chain
-
   }
+
+  return this.chain;
+  }
+
 
   /** return random text from chains */
 
   makeText(numWords = 100) {
     // TODO
+  console.log(this.chain)
   }
 }
 
 
 let mm = new MarkovMachine("the cat in the hat");
+mm.makeText()
+// let mm = new MarkovMachine("eddie is cool eddie is fun");
